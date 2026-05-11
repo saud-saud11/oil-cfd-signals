@@ -11,16 +11,16 @@ class SignalGenerator {
   static const double bbStdDev = 2.0;
   static const int smaPeriod = 50;
 
-  TradingSignal analyze(List<MarketData> data) {
+  TradingSignal analyze(List<MarketData> data, {String symbol = 'CL=F'}) {
     if (data.isEmpty) {
-      return _buildEmptySignal(0.0, DateTime.now());
+      return _buildEmptySignal(0.0, DateTime.now(), symbol);
     }
 
     final currentPrice = data.last.price;
     final timestamp = data.last.timestamp;
 
     if (data.length < smaPeriod) {
-      return _buildEmptySignal(currentPrice, timestamp);
+      return _buildEmptySignal(currentPrice, timestamp, symbol);
     }
 
     List<double> prices = data.map((d) => d.price).toList();
@@ -104,6 +104,7 @@ class SignalGenerator {
     }
 
     return TradingSignal(
+      symbol: symbol,
       type: type,
       reasoning: reasoning,
       timestamp: timestamp,
@@ -114,8 +115,9 @@ class SignalGenerator {
     );
   }
 
-  TradingSignal _buildEmptySignal(double price, DateTime ts) {
+  TradingSignal _buildEmptySignal(double price, DateTime ts, String symbol) {
     return TradingSignal(
+      symbol: symbol,
       type: SignalType.hold,
       reasoning: "Accumulating data for multi-strategy analysis...",
       timestamp: ts,

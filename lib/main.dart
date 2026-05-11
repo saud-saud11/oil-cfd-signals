@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'providers/trading_provider.dart';
-import 'screens/dashboard_screen.dart';
+import 'providers/scanner_provider.dart';
+import 'screens/main_layout.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,7 @@ class OilCfdSignalsApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => TradingProvider()),
+        ChangeNotifierProvider(create: (_) => ScannerProvider()),
       ],
       child: MaterialApp(
         title: 'Oil CFD Signals',
@@ -39,7 +41,7 @@ class OilCfdSignalsApp extends StatelessWidget {
             surface: Color(0xFF1E293B),
           ),
         ),
-        home: const DashboardScreen(),
+        home: const MainLayout(),
       ),
     );
   }

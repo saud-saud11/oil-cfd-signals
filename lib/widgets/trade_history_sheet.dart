@@ -87,6 +87,10 @@ class TradeHistorySheet extends StatelessWidget {
                     style: TextStyle(color: resultColor, fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   Text(
+                    trade.setup.symbol,
+                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
+                  Text(
                     directionText,
                     style: TextStyle(color: Colors.white70, fontSize: 12),
                   ),

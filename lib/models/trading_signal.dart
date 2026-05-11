@@ -7,6 +7,7 @@ enum SignalType {
 }
 
 class TradingSignal {
+  final String symbol;
   final SignalType type;
   final String reasoning;
   final DateTime timestamp;
@@ -16,6 +17,7 @@ class TradingSignal {
   final double targetPrice;
 
   TradingSignal({
+    required this.symbol,
     required this.type,
     required this.reasoning,
     required this.timestamp,

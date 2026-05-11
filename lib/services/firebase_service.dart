@@ -9,6 +9,7 @@ class FirebaseService {
   // Save a new trade signal when it's triggered
   Future<String> saveTradeSignal(TradeSetup setup) async {
     final doc = await _db.collection('trades').add({
+      'symbol': setup.symbol,
       'type': setup.type == SignalType.strongBuy || setup.type == SignalType.buy ? 'BUY' : 'SELL',
       'entryPrice': setup.entryPrice,
       'targetPrice': setup.targetPrice,
@@ -41,6 +42,7 @@ class FirebaseService {
       final data = doc.data();
       return TradeResult(
         setup: TradeSetup(
+          symbol: data['symbol'] ?? 'CL=F', // Fallback for old records
           type: data['type'] == 'BUY' ? SignalType.strongBuy : SignalType.strongSell,
           entryTime: (data['entryTime'] as Timestamp).toDate(),
           entryPrice: (data['entryPrice'] as num).toDouble(),

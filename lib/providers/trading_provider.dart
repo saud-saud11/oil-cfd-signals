@@ -96,6 +96,7 @@ class TradingProvider extends ChangeNotifier {
       if (_activeTrade == null && isStrongSignal && isCooldownOver) {
         _lastTradeTriggerTime = DateTime.now();
         _activeTrade = TradeSetup(
+          symbol: 'CL=F',
           type: _currentSignal!.type,
           entryTime: _currentSignal!.timestamp,
           entryPrice: _currentSignal!.currentPrice,
