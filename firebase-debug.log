@@ -1,0 +1,78 @@
+[debug] [2026-05-11T08:05:19.882Z] ----------------------------------------------------------------------
+[debug] [2026-05-11T08:05:19.893Z] Command:       C:\Users\drsau\AppData\Local\Microsoft\WinGet\Links\firebase.exe C:\Users\drsau\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase projects:create oil-cfd-signals-app --display-name Oil CFD Signals
+[debug] [2026-05-11T08:05:19.893Z] CLI Version:   14.11.0
+[debug] [2026-05-11T08:05:19.893Z] Platform:      win32
+[debug] [2026-05-11T08:05:19.893Z] Node Version:  v20.18.2
+[debug] [2026-05-11T08:05:19.894Z] Time:          Mon May 11 2026 11:05:19 GMT+0300 (GMT+03:00)
+[debug] [2026-05-11T08:05:19.894Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-05-11T08:05:19.899Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-05-11T08:05:19.900Z] > authorizing via signed-in user (substationpit@gmail.com)
+[debug] [2026-05-11T08:05:19.904Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:19.906Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:19.909Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-05-11T08:05:19.909Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"oil-cfd-signals-app","name":"Oil CFD Signals"}
+[debug] [2026-05-11T08:05:20.754Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2026-05-11T08:05:20.754Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.8678079679088380558"}
+[debug] [2026-05-11T08:05:20.757Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:20.757Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:20.757Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8678079679088380558 [none]
+[debug] [2026-05-11T08:05:21.892Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8678079679088380558 200
+[debug] [2026-05-11T08:05:21.892Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8678079679088380558 {"name":"operations/create_project.global.8678079679088380558"}
+[debug] [2026-05-11T08:05:22.402Z] [Project Creation Poller] Retrying task index 0
+[debug] [2026-05-11T08:05:22.403Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:22.403Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:22.404Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8678079679088380558 [none]
+[debug] [2026-05-11T08:05:22.779Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8678079679088380558 200
+[debug] [2026-05-11T08:05:22.779Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.8678079679088380558 {"name":"operations/create_project.global.8678079679088380558","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"163901525449","projectId":"oil-cfd-signals-app","lifecycleState":"ACTIVE","name":"Oil CFD Signals","createTime":"2026-05-11T08:05:19.285Z"}}
+[debug] [2026-05-11T08:05:22.781Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:22.781Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:22.782Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/oil-cfd-signals-app:addFirebase [none]
+[debug] [2026-05-11T08:05:24.416Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/oil-cfd-signals-app:addFirebase 403
+[debug] [2026-05-11T08:05:24.416Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/oil-cfd-signals-app:addFirebase {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-05-11T08:05:24.417Z] Request to https://firebase.googleapis.com/v1beta1/projects/oil-cfd-signals-app:addFirebase had HTTP Error: 403, The caller does not have permission
+[debug] [2026-05-11T08:05:24.418Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/oil-cfd-signals-app:addFirebase had HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\drsau\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\responseToError.js:52:12)
+    at RetryOperation._fn (C:\Users\drsau\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to add Firebase to Google Cloud Platform project. See firebase-debug.log for more info.
+[debug] [2026-05-11T08:05:42.339Z] ----------------------------------------------------------------------
+[debug] [2026-05-11T08:05:42.346Z] Command:       C:\Users\drsau\AppData\Local\Microsoft\WinGet\Links\firebase.exe C:\Users\drsau\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase projects:create oilcfdsignals --display-name Oil CFD Signals
+[debug] [2026-05-11T08:05:42.347Z] CLI Version:   14.11.0
+[debug] [2026-05-11T08:05:42.347Z] Platform:      win32
+[debug] [2026-05-11T08:05:42.347Z] Node Version:  v20.18.2
+[debug] [2026-05-11T08:05:42.347Z] Time:          Mon May 11 2026 11:05:42 GMT+0300 (GMT+03:00)
+[debug] [2026-05-11T08:05:42.347Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-05-11T08:05:42.352Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-05-11T08:05:42.354Z] > authorizing via signed-in user (substationpit@gmail.com)
+[debug] [2026-05-11T08:05:42.360Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:42.360Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:42.362Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-05-11T08:05:42.363Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"oilcfdsignals","name":"Oil CFD Signals"}
+[debug] [2026-05-11T08:05:43.116Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2026-05-11T08:05:43.117Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.6972696113483297543"}
+[debug] [2026-05-11T08:05:43.117Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:43.118Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:43.118Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6972696113483297543 [none]
+[debug] [2026-05-11T08:05:44.254Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6972696113483297543 200
+[debug] [2026-05-11T08:05:44.254Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6972696113483297543 {"name":"operations/create_project.global.6972696113483297543"}
+[debug] [2026-05-11T08:05:44.765Z] [Project Creation Poller] Retrying task index 0
+[debug] [2026-05-11T08:05:44.765Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:44.765Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:44.765Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6972696113483297543 [none]
+[debug] [2026-05-11T08:05:45.165Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6972696113483297543 200
+[debug] [2026-05-11T08:05:45.165Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.6972696113483297543 {"name":"operations/create_project.global.6972696113483297543","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"1036326165453","projectId":"oilcfdsignals","lifecycleState":"ACTIVE","name":"Oil CFD Signals","createTime":"2026-05-11T08:05:41.694Z"}}
+[debug] [2026-05-11T08:05:45.166Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:45.166Z] Checked if tokens are valid: true, expires at: 1778490208965
+[debug] [2026-05-11T08:05:45.166Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/oilcfdsignals:addFirebase [none]
+[debug] [2026-05-11T08:05:47.251Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/oilcfdsignals:addFirebase 403
+[debug] [2026-05-11T08:05:47.251Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/oilcfdsignals:addFirebase {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-05-11T08:05:47.253Z] Request to https://firebase.googleapis.com/v1beta1/projects/oilcfdsignals:addFirebase had HTTP Error: 403, The caller does not have permission
+[debug] [2026-05-11T08:05:47.255Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects/oilcfdsignals:addFirebase had HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\drsau\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\responseToError.js:52:12)
+    at RetryOperation._fn (C:\Users\drsau\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to add Firebase to Google Cloud Platform project. See firebase-debug.log for more info.
