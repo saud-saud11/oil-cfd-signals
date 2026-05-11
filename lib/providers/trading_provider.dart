@@ -6,10 +6,12 @@ import '../models/trade_setup.dart';
 import '../models/trade_result.dart';
 import '../services/market_data_service.dart';
 import '../services/signal_generator.dart';
+import '../services/firebase_service.dart';
 
 class TradingProvider extends ChangeNotifier {
   final MarketDataService _marketDataService = MarketDataService();
   final SignalGenerator _signalGenerator = SignalGenerator();
+  final FirebaseService _firebaseService = FirebaseService();
 
   List<MarketData> _priceHistory = [];
   TradingSignal? _currentSignal;
@@ -17,6 +19,7 @@ class TradingProvider extends ChangeNotifier {
   StreamSubscription? _subscription;
   List<TradeResult> _tradeLog = [];
   DateTime? _lastTradeTriggerTime;
+  String? _activeTradeDocId;
 
   List<MarketData> get priceHistory => _priceHistory;
   TradingSignal? get currentSignal => _currentSignal;
@@ -46,7 +49,15 @@ class TradingProvider extends ChangeNotifier {
     _init();
   }
 
-  void _init() {
+  void _init() async {
+    // Load historical trades from Firebase
+    try {
+      _tradeLog = await _firebaseService.getAllTrades();
+      notifyListeners();
+    } catch (e) {
+      print('Failed to load trade history from Firebase: $e');
+    }
+
     // Get some historical data so the chart isn't empty initially
     _priceHistory = _marketDataService.getInitialHistory(100);
     _updateSignal();
@@ -91,6 +102,10 @@ class TradingProvider extends ChangeNotifier {
           targetPrice: _currentSignal!.targetPrice,
           reasoning: _currentSignal!.reasoning,
         );
+        // Save to Firebase
+        _firebaseService.saveTradeSignal(_activeTrade!).then((docId) {
+          _activeTradeDocId = docId;
+        });
       } else if (_activeTrade != null) {
         // Invalidate trade if the trend strongly reverses
         bool trendReversed = (_activeTrade!.type == SignalType.strongBuy || _activeTrade!.type == SignalType.buy) && 
@@ -104,13 +119,22 @@ class TradingProvider extends ChangeNotifier {
         if ((_activeTrade!.type == SignalType.strongSell || _activeTrade!.type == SignalType.sell) && _currentSignal!.currentPrice <= _activeTrade!.targetPrice) targetHit = true;
 
         if (trendReversed || trendReversedBearish || targetHit) {
-          // Log the result
+          // Log the result locally
           _tradeLog.add(TradeResult(
             setup: _activeTrade!,
             isWin: targetHit,
             closeTime: _currentSignal!.timestamp,
             closePrice: _currentSignal!.currentPrice,
           ));
+          // Update in Firebase
+          if (_activeTradeDocId != null) {
+            _firebaseService.updateTradeResult(
+              _activeTradeDocId!,
+              targetHit,
+              _currentSignal!.currentPrice,
+            );
+            _activeTradeDocId = null;
+          }
           _activeTrade = null; // Clear the trade
         }
       }
